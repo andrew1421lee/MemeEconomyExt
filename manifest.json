@@ -5,8 +5,14 @@
     "version": "0.1",
     "browser_action": {
         "default_icon": "icon.png",
-        "default_popup": "appmenu.html"
+        "default_title": "Inject"
+        
     },
+    "content_scripts":[{
+        "matches":["https://www.reddit.com/*"],
+        "js": ["redditscript.js"],
+        "css": ["css/redditcss.css"]
+    }],
     "permissions":[
         "activeTab"
     ]

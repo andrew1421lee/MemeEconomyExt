@@ -1,0 +1,14 @@
+#investbutton {
+    background-color: white;
+    font-weight: bold;
+    font-size: 7.5pt;
+    color: #888;
+    border:1px solid white;
+    text-align: -webkit-match-parent;
+    padding: 0 1px;
+    text-decoration: none;
+    cursor: auto;
+}
+#investbutton:hover{
+    border: 1px solid grey;
+}
