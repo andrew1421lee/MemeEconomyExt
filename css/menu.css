@@ -6,13 +6,56 @@ h1{
     width: 500px;
 }
 
+#refreshstate{
+    text-align: left;
+}
+
+#state {
+    margin: 0;
+    position: absolute;
+    left:75px;
+    top:90px;
+}
+
 #usernametitle, #usertext, #namebutton {
     display:inline;
 }
 
-#namebutton{
+#namebutton, #adduserbt, #deluserbt, #refreshbutton {
     position: relative;
-    left:5px;
+    right:0px;
+    margin-left:5px;
+    border-style: none;
+    background: #0a7017;
+    /*background-image: -webkit-linear-gradient(top, #34d955, #078219);
+    background-image: -moz-linear-gradient(top, #34d955, #078219);
+    background-image: -ms-linear-gradient(top, #34d955, #078219);
+    background-image: -o-linear-gradient(top, #34d955, #078219);
+    background-image: linear-gradient(to bottom, #34d955, #078219);*/
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#namebutton:hover, #adduserbt:hover, #deluserbt:hover, #refreshbutton:hover {
+    background: #0d931e;
+    /*
+    background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    */
+    text-decoration: none;
+}
+
+#refreshbutton:disabled{
+    background:lightgreen;
+}
+
+#buttoncontainer{
+    position: absolute;
+    top:58px;
+    right:10px;
 }
 
 hr{
@@ -40,11 +83,8 @@ td, th{
     font-size: 20pt;
 }
 
-#dollasign{
-}
-
 #cashmoney{
     position:absolute;
-    top: 55px;
+    top: 25px;
     right:10px;
 }

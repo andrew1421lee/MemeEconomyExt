@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var json = JSON.parse(xhttp.responseText)
             var tr;
             var bankmoney = document.getElementById("money");
+            var status = document.getElementById("state");
+            status.innerText = "Connected to server";
             bankmoney.innerText = json["bank"].toFixed(2);
             for (var i = 0; i < json["purchase_arr"].length; i++) {
                 tr = $('<tr id="infotable"/>');
