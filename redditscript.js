@@ -112,6 +112,9 @@ function openNav(link) {
     var investbt = document.createElement("button");
     investbt.setAttribute("id", "investbt");
     investbt.innerText = "Purchase";
+    investbt.onclick = function(){
+        requestBuy();
+    }
     window.appendChild(investbt);
 
     var closebt = document.createElement("button");
@@ -136,6 +139,60 @@ function updateCashSlider(val){
 function closeNav(){
     var nav = document.getElementById("popupcontainer");
     nav.parentNode.removeChild(nav);
+}
+
+function requestBuy(){
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "http://127.0.0.1:9000/jsontest");
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onload = function() {
+        //alert("Purchase made!");
+    };
+    xhttp.send();
+    closeNav();
+    showPurchased("Purchase made", 1234);
+}
+
+function showPurchased(result ,money){
+    var container = document.createElement("div");
+    container.setAttribute("id", "popupcontainer");
+
+    var window = document.createElement("div");
+    window.setAttribute("id", "popupwindow");
+    window.setAttribute("style", "text-align:center;");
+
+    var title = document.createElement("h1");
+    title.setAttribute("id", "xh1");
+    title.setAttribute("style", "position:static; padding-top:10%");
+    title.innerText = result;
+
+    var info = document.createElement("h3");
+    info.setAttribute("id", "xh3");
+    info.setAttribute("style", "position:static; display:inline; font-size:10pt;");
+    info.innerText = "Current bank balance = ";
+
+    var bankbal = document.createElement("h3");
+    bankbal.setAttribute("id", "xh3");
+    bankbal.setAttribute("style", "position:static; display:inline; font-size:10pt;");
+    bankbal.innerText = money;
+
+    var bre = document.createElement("br");
+
+    var closebt = document.createElement("button");
+    closebt.setAttribute("id", "closebt");
+    closebt.setAttribute("style","position:static; margin-top:5%;");
+    closebt.innerText = "Ok";
+    closebt.onclick = function(){
+        closeNav();
+    }
+
+    window.appendChild(title);
+    window.appendChild(info);
+    window.appendChild(bankbal);
+    window.appendChild(bre);
+    window.appendChild(closebt);
+    container.appendChild(window);
+    document.body.appendChild(container);
 }
 
 /* Close when someone clicks on the "x" symbol inside the overlay */

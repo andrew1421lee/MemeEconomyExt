@@ -17,6 +17,6 @@
         "data.js"
     ],
     "permissions":[
-        "activeTab", "storage"
+        "activeTab", "storage", "http://127.0.0.1:9000/*"
     ]
 }
