@@ -113,7 +113,9 @@ function openNav(link) {
     investbt.setAttribute("id", "investbt");
     investbt.innerText = "Purchase";
     investbt.onclick = function(){
-        requestBuy();
+        if(document.getElementById("xslider").value != 0){
+            requestBuy();
+        }
     }
     window.appendChild(investbt);
 
@@ -159,11 +161,11 @@ function showPurchased(result ,money){
 
     var window = document.createElement("div");
     window.setAttribute("id", "popupwindow");
-    window.setAttribute("style", "text-align:center;");
+    window.setAttribute("style", "text-align:center; height: 20%; width: 25%");
 
     var title = document.createElement("h1");
     title.setAttribute("id", "xh1");
-    title.setAttribute("style", "position:static; padding-top:10%");
+    title.setAttribute("style", "position:static; padding-top:5%");
     title.innerText = result;
 
     var info = document.createElement("h3");
@@ -180,7 +182,7 @@ function showPurchased(result ,money){
 
     var closebt = document.createElement("button");
     closebt.setAttribute("id", "closebt");
-    closebt.setAttribute("style","position:static; margin-top:5%;");
+    closebt.setAttribute("style","position:static; margin-top:1.5%;");
     closebt.innerText = "Ok";
     closebt.onclick = function(){
         closeNav();

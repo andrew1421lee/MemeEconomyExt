@@ -20,3 +20,16 @@ hr{
     border-bottom: 1px dashed #ccc;
     background: #999;
 }
+
+table{
+    width: 100%;
+    text-align: left;
+}
+
+table, td, th{
+    border: 1px black;
+}
+
+td, th{
+    padding: 5px;
+}
