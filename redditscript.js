@@ -22,10 +22,25 @@ for(i = 0; i < uls.length; i++){
 }
 
 function showInvestWindow(link){
-    openNav(link);
+    chrome.storage.sync.get("name", function(item){
+        var xhttp = new XMLHttpRequest();
+        var str = link.toString().replace(/\//g, "|"),
+            delimiter = '|',
+            start = 6,
+            tokens = str.split(delimiter).slice(0,start),
+            cleanurl = tokens.join(delimiter);
+        xhttp.open("GET", "https://149.125.136.182:4443/post/username=" + item.name + "/url-segment=" + cleanurl + "/shares=1");
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.onload = function() {
+            var json = JSON.parse(xhttp.responseText)
+            //alert(xhttp.responseText);
+            openNav(link, cleanurl, json["bank"], json["purchase_arr"][0]["purchased_price_per_share"]);
+        }
+        xhttp.send();
+    });
 }
 
-function openNav(link) {
+function openNav(dirtylink, link, bank, price) {
     var container = document.createElement("div");
     container.setAttribute("id", "popupcontainer");
     
@@ -39,8 +54,29 @@ function openNav(link) {
 
     var posturl = document.createElement("h3");
     posturl.setAttribute("id", "xh3");
-    posturl.innerText = link.trunc(75);
+    posturl.innerText = dirtylink.trunc(75);
     window.appendChild(posturl);
+
+    var infocontainer = document.createElement("div");
+    infocontainer.setAttribute("id", "infocontainer");
+
+    var bankmoney = document.createElement("h2");
+    bankmoney.setAttribute("id", "bankmoney");
+    bankmoney.innerText = "Bank: $" + bank.toFixed(2).toString();
+    infocontainer.appendChild(bankmoney);
+
+    var pps = document.createElement("h2");
+    pps.setAttribute("id", "pps");
+    pps.innerText = "PpS: $" + price.toFixed(2).toString();
+    infocontainer.appendChild(pps);
+
+    var totalCost = document.createElement("h2");
+    totalCost.setAttribute("id", "totalcost");
+    totalCost.innerText = "Total: $0";
+    infocontainer.appendChild(totalCost);
+
+
+    window.appendChild(infocontainer);
 
     var btcontainer = document.createElement("div");
     btcontainer.setAttribute("id", "btcontainer");
@@ -52,6 +88,7 @@ function openNav(link) {
     slider.setAttribute("value", 0);
     slider.onchange = function(){
         updateCashTextbox(slider.value);
+        updateTotalMoney(slider.value, price);
     }
     btcontainer.appendChild(slider);
 
@@ -61,6 +98,7 @@ function openNav(link) {
     textbox.setAttribute("value", 0);
     textbox.onchange = function(){
         updateCashSlider(textbox.value);
+        updateTotalMoney(textbox.value, price);
     }
     btcontainer.appendChild(textbox);
     
@@ -71,6 +109,8 @@ function openNav(link) {
     presetbuy1.onclick = function(){
         updateCashSlider(1);
         updateCashTextbox(1);
+        updateTotalMoney(1, price);
+
     }
     btcontainer.appendChild(presetbuy1);
 
@@ -80,6 +120,7 @@ function openNav(link) {
     presetbuy2.onclick = function(){
         updateCashSlider(5);
         updateCashTextbox(5);
+        updateTotalMoney(5, price);
     }
     btcontainer.appendChild(presetbuy2);
 
@@ -89,6 +130,7 @@ function openNav(link) {
     presetbuy3.onclick = function(){
         updateCashSlider(20);
         updateCashTextbox(20);
+        updateTotalMoney(20, price);
     }
     btcontainer.appendChild(presetbuy3);
 
@@ -98,6 +140,7 @@ function openNav(link) {
     presetbuy4.onclick = function(){
         updateCashSlider(50);
         updateCashTextbox(50);
+        updateTotalMoney(50, price);
     }
     btcontainer.appendChild(presetbuy4);
 
@@ -107,6 +150,7 @@ function openNav(link) {
     presetbuy5.onclick = function(){
         updateCashSlider(100);
         updateCashTextbox(100);
+        updateTotalMoney(100, price);
     }
     btcontainer.appendChild(presetbuy5);
 
@@ -115,7 +159,7 @@ function openNav(link) {
     investbt.innerText = "Purchase";
     investbt.onclick = function(){
         if(document.getElementById("xslider").value != 0){
-            requestBuy();
+            requestBuy(link, document.getElementById("xslider").value);
         }
     }
     window.appendChild(investbt);
@@ -139,21 +183,36 @@ function updateCashSlider(val){
     document.getElementById('xslider').value=val;
 }
 
+function updateTotalMoney(val, price){
+
+    document.getElementById("totalcost").innerText = "Total: $" + (val*price).toFixed(2).toString();
+}
+
 function closeNav(){
     var nav = document.getElementById("popupcontainer");
     nav.parentNode.removeChild(nav);
 }
 
-function requestBuy(){
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://127.0.0.1:9000/jsontest");
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.onload = function() {
-        //alert("Purchase made!");
-    };
-    xhttp.send();
-    closeNav();
-    showPurchased("Purchase made", 1234);
+function requestBuy(url, amt){
+    chrome.storage.sync.get("name", function(item){
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://149.125.136.182:4443/buy/username=" + item.name + "/url-segment=" + url + "/shares=" + amt);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.onload = function() {
+            var json = JSON.parse(xhttp.responseText);
+            var success = json["changed"];
+            var bank = json["bank"];
+            //console.log(success);
+            if(success){
+                showPurchased("Purchase made", bank);
+            }else{
+                showPurchased("Purchaed failed", bank)
+            }
+        };
+        xhttp.send();
+        closeNav();
+        
+    });
 }
 
 function showPurchased(result ,money){
@@ -177,7 +236,7 @@ function showPurchased(result ,money){
     var bankbal = document.createElement("h3");
     bankbal.setAttribute("id", "xh3");
     bankbal.setAttribute("style", "position:static; display:inline; font-size:10pt;");
-    bankbal.innerText = money;
+    bankbal.innerText = money.toFixed(2);
 
     var bre = document.createElement("br");
 

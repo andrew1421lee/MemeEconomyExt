@@ -5,7 +5,7 @@
     "version": "0.1",
     "browser_action": {
         "default_icon": "icon.png",
-        "default_title": "Inject",
+        "default_title": "Meme Economy",
         "default_popup": "appmenu.html"
     },
     "content_scripts":[{
@@ -14,6 +14,6 @@
         "css": ["css/redditcss.css"]
     }],
     "permissions":[
-        "activeTab", "storage", "http://127.0.0.1:9000/*", "http://149.125.136.182:1234/*"
+        "activeTab", "storage", "http://127.0.0.1:9000/*", "https://149.125.136.182:4443/*"
     ]
 }
