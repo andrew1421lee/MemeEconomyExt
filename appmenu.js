@@ -42,12 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
         xhttp.onload = function() {
             var json = JSON.parse(xhttp.responseText)
             var tr;
+            var bankmoney = document.getElementById("money");
+            bankmoney.innerText = json["bank"].toFixed(2);
             for (var i = 0; i < json["purchase_arr"].length; i++) {
                 tr = $('<tr id="infotable"/>');
-                tr.append("<td>" + json["purchase_arr"][i].segment_url.trunc(75) + "</td>");
-                tr.append("<td>" + json["purchase_arr"][i].purchased_price_per_share + "</td>");
+                tr.append("<td>" + json["purchase_arr"][i].segment_url.trunc(70) + "</td>");
+                tr.append("<td>" +  "$" + json["purchase_arr"][i].purchased_price_per_share.toFixed(2) + "</td>");
                 if(json["purchase_arr"][i]["data_avaliable"]){
-                    tr.append("<td>" + json["purchase_arr"][i].vakue + "</td>");
+                    tr.append("<td>" + "$" + json["purchase_arr"][i].value.toFixed(2) + "</td>");
                 }else{
                     tr.append("<td>" + "N/A" + "</td>");
                 }

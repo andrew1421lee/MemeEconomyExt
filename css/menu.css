@@ -33,3 +33,18 @@ table, td, th{
 td, th{
     padding: 5px;
 }
+
+
+#money, #dollasign{
+    display:inline;
+    font-size: 20pt;
+}
+
+#dollasign{
+}
+
+#cashmoney{
+    position:absolute;
+    top: 55px;
+    right:10px;
+}
