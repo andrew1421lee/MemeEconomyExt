@@ -52,10 +52,11 @@
     overflow-x: inherit;
 }
 
-#xbutton {
+#preset1 {
     position: absolute;
-    bottom: 10px;
-    right:10px;
+    bottom: 0;
+    left:5%;
+    width: 14%;
     border-style: none;
     background: #34d955;
     background-image: -webkit-linear-gradient(top, #34d955, #078219);
@@ -68,13 +69,174 @@
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
-#xbutton:hover {
+#preset1:hover {
     background: #3ffa64;
     background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
     background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
     background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
     background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
     background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    text-decoration: none;
+}
+
+#preset2 {
+    position: absolute;
+    bottom: 0;
+    left:24%;
+    width: 14%;
+    border-style: none;
+    background: #34d955;
+    background-image: -webkit-linear-gradient(top, #34d955, #078219);
+    background-image: -moz-linear-gradient(top, #34d955, #078219);
+    background-image: -ms-linear-gradient(top, #34d955, #078219);
+    background-image: -o-linear-gradient(top, #34d955, #078219);
+    background-image: linear-gradient(to bottom, #34d955, #078219);
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#preset2:hover {
+    background: #3ffa64;
+    background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    text-decoration: none;
+}
+
+#preset3 {
+    position: absolute;
+    bottom: 0;
+    left:43%;
+    width: 14%;
+    border-style: none;
+    background: #34d955;
+    background-image: -webkit-linear-gradient(top, #34d955, #078219);
+    background-image: -moz-linear-gradient(top, #34d955, #078219);
+    background-image: -ms-linear-gradient(top, #34d955, #078219);
+    background-image: -o-linear-gradient(top, #34d955, #078219);
+    background-image: linear-gradient(to bottom, #34d955, #078219);
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#preset3:hover {
+    background: #3ffa64;
+    background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    text-decoration: none;
+}
+
+#preset4 {
+    position: absolute;
+    bottom: 0;
+    left:62%;
+    width: 14%;
+    border-style: none;
+    background: #34d955;
+    background-image: -webkit-linear-gradient(top, #34d955, #078219);
+    background-image: -moz-linear-gradient(top, #34d955, #078219);
+    background-image: -ms-linear-gradient(top, #34d955, #078219);
+    background-image: -o-linear-gradient(top, #34d955, #078219);
+    background-image: linear-gradient(to bottom, #34d955, #078219);
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#preset4:hover {
+    background: #3ffa64;
+    background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    text-decoration: none;
+}
+
+#preset5 {
+    position: absolute;
+    bottom: 0;
+    left:81%;
+    width: 14%;
+    border-style: none;
+    background: #34d955;
+    background-image: -webkit-linear-gradient(top, #34d955, #078219);
+    background-image: -moz-linear-gradient(top, #34d955, #078219);
+    background-image: -ms-linear-gradient(top, #34d955, #078219);
+    background-image: -o-linear-gradient(top, #34d955, #078219);
+    background-image: linear-gradient(to bottom, #34d955, #078219);
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#preset5:hover {
+    background: #3ffa64;
+    background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    text-decoration: none;
+}
+
+#investbt {
+    position: absolute;
+    bottom: 10px;
+    left:10px;
+    width: 50%;
+    border-style: none;
+    background: #34d955;
+    background-image: -webkit-linear-gradient(top, #34d955, #078219);
+    background-image: -moz-linear-gradient(top, #34d955, #078219);
+    background-image: -ms-linear-gradient(top, #34d955, #078219);
+    background-image: -o-linear-gradient(top, #34d955, #078219);
+    background-image: linear-gradient(to bottom, #34d955, #078219);
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#investbt:hover {
+    background: #3ffa64;
+    background-image: -webkit-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -moz-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -ms-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: -o-linear-gradient(top, #3ffa64, #16b52b);
+    background-image: linear-gradient(to bottom, #3ffa64, #16b52b);
+    text-decoration: none;
+}
+
+#btcontainer{
+    position: absolute;
+    top:52%;
+    background-color: white;
+    width: 100%;
+    height: 43px;
+    z-index: 1002;
+}
+
+
+#closebt {
+    position: absolute;
+    bottom: 10px;
+    right:10px;
+    border-style: none;
+    background: #3c4040;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+#closebt:hover {
+    background: #5b6060;
     text-decoration: none;
 }
 
