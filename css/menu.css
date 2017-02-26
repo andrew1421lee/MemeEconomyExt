@@ -1,0 +1,22 @@
+h1{
+    color: black;
+}
+
+#container{
+    width: 500px;
+}
+
+#usernametitle, #usertext, #namebutton {
+    display:inline;
+}
+
+#namebutton{
+    position: relative;
+    left:5px;
+}
+
+hr{
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}
