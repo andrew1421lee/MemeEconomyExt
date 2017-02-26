@@ -11,6 +11,7 @@
 }
 #investbutton:hover{
     border: 1px solid grey;
+    cursor: pointer;
 }
 
 #popupcontainer{
@@ -31,7 +32,7 @@
     top: 50%;
     left: 50%;
     width: 45%;
-    height: 30%;
+    height: 35%;
     transform: translate(-50%, -50%);
     border-style: none;
     background-color: white;
@@ -52,6 +53,11 @@
     overflow-x: inherit;
 }
 
+#preset1, #preset2, #preset3, #preset4, #preset5{
+    padding: 8px 15px 8px 15px;
+    margin-bottom: 1%;
+}
+
 #preset1 {
     position: absolute;
     bottom: 0;
@@ -66,7 +72,6 @@
     background-image: linear-gradient(to bottom, #34d955, #078219);
     color: #ffffff;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
 #preset1:hover {
@@ -93,7 +98,6 @@
     background-image: linear-gradient(to bottom, #34d955, #078219);
     color: #ffffff;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
 #preset2:hover {
@@ -120,7 +124,6 @@
     background-image: linear-gradient(to bottom, #34d955, #078219);
     color: #ffffff;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
 #preset3:hover {
@@ -147,7 +150,6 @@
     background-image: linear-gradient(to bottom, #34d955, #078219);
     color: #ffffff;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
 #preset4:hover {
@@ -174,7 +176,6 @@
     background-image: linear-gradient(to bottom, #34d955, #078219);
     color: #ffffff;
     font-size: 20px;
-    padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
 #preset5:hover {
@@ -216,10 +217,10 @@
 
 #btcontainer{
     position: absolute;
-    top:52%;
+    bottom:60px;
     background-color: white;
     width: 100%;
-    height: 43px;
+    height: 90px;
     z-index: 1002;
 }
 
@@ -242,21 +243,20 @@
 
 #xtextbox{
     position: absolute;
-    top:80px;
-    right:10px;
-    width: 20%;
-    height: 25.6px;
+    margin-left:1%;
+    margin-top:1%;
+    width: 17%;
+    height: 21px;
     border-style: solid;
     border-color: #34d955;
 }
 
 #xslider {
-    position: absolute;
+    position: static;
     -webkit-appearance: none;
-    left:10px;
-    top:80px;
+    margin-left:1%;
+    margin-top:1%;
     width: 75%;
-    margin: 0.7px 0;
 }
 #xslider:focus {
     outline: none;   

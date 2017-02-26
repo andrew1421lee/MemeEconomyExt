@@ -14,6 +14,6 @@
         "css": ["css/redditcss.css"]
     }],
     "permissions":[
-        "activeTab", "storage", "http://127.0.0.1:9000/*"
+        "activeTab", "storage", "http://127.0.0.1:9000/*", "http://149.125.136.182:1234/*"
     ]
 }

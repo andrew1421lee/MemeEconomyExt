@@ -42,6 +42,10 @@ function openNav(link) {
     posturl.innerText = link.trunc(75);
     window.appendChild(posturl);
 
+    var btcontainer = document.createElement("div");
+    btcontainer.setAttribute("id", "btcontainer");
+    window.appendChild(btcontainer);
+    
     var slider = document.createElement("INPUT");
     slider.setAttribute("type", "range");
     slider.setAttribute("id", "xslider");
@@ -49,7 +53,7 @@ function openNav(link) {
     slider.onchange = function(){
         updateCashTextbox(slider.value);
     }
-    window.appendChild(slider);
+    btcontainer.appendChild(slider);
 
     var textbox = document.createElement("INPUT");
     textbox.setAttribute("type", "text");
@@ -58,11 +62,8 @@ function openNav(link) {
     textbox.onchange = function(){
         updateCashSlider(textbox.value);
     }
-    window.appendChild(textbox);
-
-    var btcontainer = document.createElement("div");
-    btcontainer.setAttribute("id", "btcontainer");
-    window.appendChild(btcontainer);
+    btcontainer.appendChild(textbox);
+    
 
     var presetbuy1 = document.createElement("button");
     presetbuy1.setAttribute("id", "preset1");

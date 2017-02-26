@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    updateTable();
     var uname;
     chrome.storage.sync.get("name", function(item){
         uname = item.name;
@@ -22,18 +23,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var button = document.getElementById("refreshbutton");
     button.onclick = function(){
+        button.disabled = true;
         updateTable();
+        setTimeout(function(){
+            button.disabled = false;
+        }, 5000);
+
     }
 
     function updateTable(){
-        var json = [{"User_Name":"John Doe","score":"10","team":"1"},{"User_Name":"Jane Smith","score":"15","team":"2"},{"User_Name":"Chuck Berry","score":"12","team":"2"}];
-        var tr;
-        for (var i = 0; i < json.length; i++) {
-            tr = $('<tr/>');
-            tr.append("<td>" + json[i].User_Name + "</td>");
-            tr.append("<td>" + json[i].score + "</td>");
-            tr.append("<td>" + json[i].team + "</td>");
-            $('table').append(tr);
+        var oldtable = document.getElementById("infotable");
+        if(oldtable != null){
+            oldtable.parentNode.removeChild(oldtable);
         }
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "http://149.125.136.182:1234/request/username=Etirps/url-segment=xd/shares=1");
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.onload = function() {
+            var json = JSON.parse(xhttp.responseText)
+            var tr;
+            for (var i = 0; i < json["purchase_arr"].length; i++) {
+                tr = $('<tr id="infotable"/>');
+                tr.append("<td>" + json["purchase_arr"][i].segment_url.trunc(75) + "</td>");
+                tr.append("<td>" + json["purchase_arr"][i].purchased_price_per_share + "</td>");
+                if(json["purchase_arr"][i]["data_avaliable"]){
+                    tr.append("<td>" + json["purchase_arr"][i].vakue + "</td>");
+                }else{
+                    tr.append("<td>" + "N/A" + "</td>");
+                }
+                $('table').append(tr);
+            }
+        };
+        xhttp.send();
     }
 });
+
+String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return (this.length > n) ? this.substr(0, n-1) + '[...]' : this;
+      };
