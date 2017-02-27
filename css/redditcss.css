@@ -73,7 +73,8 @@
 }
 
 #infocontainer {
-    margin-top: 15%;
+    position:absolute;
+    margin-top: 60pt;
 }
 
 #preset1, #preset2, #preset3, #preset4, #preset5{

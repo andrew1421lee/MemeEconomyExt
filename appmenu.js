@@ -94,7 +94,7 @@ function SellStock(ele, id){
         //alert(urlsnip);
         urlsnip = urlsnip.substring(18).replace(/\//g, "|");
         //alert(urlsnip);
-        alert("https://149.125.136.182:4443/sell/username=Etirps/url-segment='" + urlsnip + "'/shares=" + id);
+        //alert("https://149.125.136.182:4443/sell/username=Etirps/url-segment='" + urlsnip + "'/shares=" + id);
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "https://149.125.136.182:4443/sell/username=Etirps/url-segment='" + urlsnip + "'/shares=" + id);
         xhttp.setRequestHeader("Content-type", "application/json");
